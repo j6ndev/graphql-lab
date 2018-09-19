@@ -1,1 +1,1 @@
-# vigilant-train
+# GraphQL Workshop

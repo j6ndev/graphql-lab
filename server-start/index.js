@@ -25,12 +25,16 @@ const typeDefs = gql`
 
   type Query {
     frameworks: [Framework]
+    framework(id: ID!): Framework
   }
 `;
 
 const resolvers = {
   Query: {
-    frameworks: () => frameworks
+    frameworks: () => frameworks,
+    framework: (_, { id }) => {
+      return frameworks.find( f => f.id == id)
+    }
   }
 };
 

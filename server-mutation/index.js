@@ -21,6 +21,7 @@ const typeDefs = gql`
 
   type Mutation {
     addTask(text: String): Task
+    removeTask(id: ID): Task
   }
 `;
 
@@ -33,6 +34,14 @@ const resolvers = {
       try {
         const task = await new TaskRepo({text}).save();
         return task;
+      } catch(e) {
+        throw new Error(e);
+      }
+    },
+    removeTask: async (_, { id }) => {
+      try {
+        const deletedTask = TaskRepo.findOneAndDelete({_id: id});
+        return deletedTask;
       } catch(e) {
         throw new Error(e);
       }

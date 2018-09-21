@@ -1,7 +1,9 @@
 module.exports = {
+
   Query: {
     frameworks: (_, __, ctx) => ctx.db.find()
   },
+
   Mutation: {
     addFramework: async (_, { name, git }, ctx) => {
       try {
@@ -12,7 +14,5 @@ module.exports = {
       }
     },
   }
+
 };
-
-
-

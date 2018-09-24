@@ -7,8 +7,16 @@ const frameworkSchema = new Schema({
     trim: true,
     required: true
   },
+  description: {
+    type: String,
+    default: ""
+  },
   git: {
     type: String,
+  },
+  avatar: {
+    type: String,
+    default: ""
   },
   stars: {
     type: Number,

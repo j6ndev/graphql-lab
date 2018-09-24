@@ -4,6 +4,8 @@ module.exports = gql`
   type Framework {
     id: String
     name: String
+    description: String
+    avatar: String
     git: String
     stars: Int
   }

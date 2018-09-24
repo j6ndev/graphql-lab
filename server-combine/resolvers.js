@@ -10,12 +10,14 @@ module.exports = {
     addFramework: async (_, { name, git }, ctx) => {
       try {
         const url = git.split("https://github.com/")[1];
-        const stars = await axios(`https://api.github.com/repos/${url}`);
+        const gh = await axios(`https://api.github.com/repos/${url}`);
 
         const framework = await new ctx.db({
           name,
+          description: gh.data.description,
           git,
-          stars: stars.data.stargazers_count
+          stars: gh.data.stargazers_count,
+          avatar: gh.data.owner.avatar_url
         }).save();
 
         return framework;
